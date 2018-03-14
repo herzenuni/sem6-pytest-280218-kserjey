@@ -15,6 +15,10 @@ def test_fill_none():
 
     assert create_dict(keys, values) == expected
 
-def test_check_types():
+@pytest.mark.parametrize('keys, values', [
+    (['sergey'], 'react'),
+    ('sergey', ['react'])
+])
+def test_check_types(keys, values):
     with pytest.raises(TypeError):
-        create_dict('nick', 'python')
+        create_dict(keys, values)
